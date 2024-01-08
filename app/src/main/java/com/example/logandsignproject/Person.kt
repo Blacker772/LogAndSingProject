@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "table_for_account")
-class Entity(
+class Person(
     @PrimaryKey(autoGenerate = true)
     val id: Int?,
 

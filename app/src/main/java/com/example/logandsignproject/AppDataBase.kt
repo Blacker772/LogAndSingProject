@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [Entity::class],
+    entities = [Person::class],
     version = 1
 )
 

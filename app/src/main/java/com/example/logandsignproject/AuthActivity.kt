@@ -33,7 +33,7 @@ class AuthActivity : AppCompatActivity() {
 
             Thread{
 
-                val result: Entity? = db.getDao().qetUserByLogin(binding?.edLogin?.text.toString())
+                val result: Person? = db.getDao().qetUserByLogin(binding?.edLogin?.text.toString())
 
                 runOnUiThread{
                     binding?.let { safeBinding ->

@@ -22,11 +22,11 @@ class SignActivity : AppCompatActivity() {
         val db = AppDataBase.getDB(this)
 
         binding?.btLogIn?.setOnClickListener {
-            var name = binding?.etName?.text.toString()
-            var surname = binding?.edSurName?.text.toString()
-            var login = binding?.edLogin?.text.toString()
-            var password = binding?.edPassword?.text.toString()
-            var email = binding?.edEmail?.text.toString()
+            val name = binding?.etName?.text.toString()
+            val surname = binding?.edSurName?.text.toString()
+            val login = binding?.edLogin?.text.toString()
+            val password = binding?.edPassword?.text.toString()
+            val email = binding?.edEmail?.text.toString()
             var gender: String? = null
             when(binding?.radioGroup?.checkedRadioButtonId){
                 binding?.male?.id ->{ gender = "Male"}
@@ -34,7 +34,7 @@ class SignActivity : AppCompatActivity() {
                 else -> {}
             }
 
-            if (name.isNullOrEmpty() || surname.isNullOrEmpty() || login.isNullOrEmpty() || password.isNullOrEmpty() || email.isNullOrEmpty() || gender.isNullOrEmpty()){
+            if (name.isEmpty() || surname.isEmpty() || login.isEmpty() || password.isEmpty() || email.isEmpty() || gender.isNullOrEmpty()){
                 binding?.tvError?.isVisible = true
             } else{
                 binding?.tvError?.text = "Ваш Аккаунт создан успешно!"
@@ -46,13 +46,13 @@ class SignActivity : AppCompatActivity() {
 
                 Thread{
                     db.getDao().insertPerson(
-                        Entity(null, name, surname, login, password, email, gender)
+                        Person(null, name, surname, login, password, email, gender)
                     )
                 }.start()
 
                 val intent = Intent(this, AuthActivity::class.java)
                 intent.putExtra("login", binding?.edLogin?.text.toString())
-                intent.putExtra("password", binding?.edPassword?.text.toString())
+//                intent.putExtra("password", binding?.edPassword?.text.toString())
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }

@@ -9,8 +9,8 @@ import androidx.room.Query
 interface DAO {
 
     @Insert
-    fun insertPerson(item: Entity)
+    fun insertPerson(item: Person)
 
     @Query("SELECT * FROM table_for_account WHERE login = :login")
-    fun qetUserByLogin(login: String): Entity
+    fun qetUserByLogin(login: String): Person
 }
